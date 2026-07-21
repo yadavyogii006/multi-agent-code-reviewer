@@ -42,7 +42,7 @@ A Python CLI tool that uses **three LLM-powered agents** (via [GroqCloud](https:
 ## Installation
 
 ```bash
-git clone https://github.com/<your-username>/multi-agent-code-reviewer.git
+git clone https://github.com/yadavyogii006/multi-agent-code-reviewer.git
 cd multi-agent-code-reviewer
 
 python -m venv venv
