@@ -8,14 +8,14 @@ A Python CLI tool that uses **three LLM-powered agents** (via [GroqCloud](https:
 |-------|------|
 | **Agent 1 – Code Review** | Readability, naming conventions, function organization, best practices |
 | **Agent 2 – Bug Detection** | Logical errors, missing exception handling, unused variables, potential bugs |
-| **Agent 3 – Report Generator** | Combines both outputs into `report.md` with summary, findings, and rating (1–10) |
+| **Agent 3 – Report Generator** | Combines both outputs into `output/report.md` with summary, findings, and rating (1–10) |
 
 ## Architecture
 
 ```
 ┌─────────────────┐     ┌──────────────────────┐     ┌─────────────────────┐
 │  Python file(s) │────▶│  Agent 1: Code Review │────▶│                     │
-└─────────────────┘     └──────────────────────┘     │  Agent 3: Report    │──▶ report.md
+└─────────────────┘     └──────────────────────┘     │  Agent 3: Report    │──▶ output/report.md
          │                ┌──────────────────────┐     │  Generator          │
          └───────────────▶│  Agent 2: Bug Detect │────▶│                     │
                           └──────────────────────┘     └─────────────────────┘
@@ -30,7 +30,7 @@ A Python CLI tool that uses **three LLM-powered agents** (via [GroqCloud](https:
 
 - Accepts a single `.py` file or a folder of Python files
 - Three specialized agents with focused system prompts
-- Generates a polished `report.md` with Project Summary, Code Review, Potential Bugs, and Overall Rating
+- Generates a polished `output/report.md` with Project Summary, Code Review, Potential Bugs, and Overall Rating
 - Configurable Groq model via environment variable
 - Sample code included for quick testing
 
@@ -80,10 +80,10 @@ Review an entire folder:
 python main.py sample_code/
 ```
 
-Custom output path:
+Custom output path (still saved under `output/` by convention):
 
 ```bash
-python main.py sample_code/ -o reviews/my_report.md
+python main.py sample_code/ -o output/my_report.md
 ```
 
 Override the model:
@@ -94,7 +94,7 @@ python main.py sample_code/calculator.py --model llama-3.1-8b-instant
 
 ## Sample Output
 
-The tool writes `report.md` with sections like:
+The tool writes `output/report.md` with sections like:
 
 ```markdown
 # Code Review Report
@@ -130,6 +130,7 @@ The tool writes `report.md` with sections like:
 │   ├── file_loader.py           # Load .py files / directories
 │   └── groq_client.py           # Groq API wrapper
 ├── sample_code/                 # Demo code with intentional issues
+├── output/                      # Generated reports (created at runtime)
 ├── .env.example
 ├── requirements.txt
 └── README.md

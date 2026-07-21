@@ -64,5 +64,6 @@ Produce the complete markdown report now."""
         return self.client.chat(SYSTEM_PROMPT, user_prompt, temperature=0.2)
 
     def save(self, report: str, output_path: Path) -> Path:
+        output_path.parent.mkdir(parents=True, exist_ok=True)
         output_path.write_text(report, encoding="utf-8")
         return output_path

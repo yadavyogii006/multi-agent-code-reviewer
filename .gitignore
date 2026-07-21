@@ -18,7 +18,6 @@ build/
 *.swp
 
 # Output
-report.md
 output/
 
 # OS

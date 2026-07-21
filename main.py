@@ -26,7 +26,7 @@ def parse_args() -> argparse.Namespace:
 Examples:
   python main.py sample_code/calculator.py
   python main.py sample_code/
-  python main.py my_project/ -o review_output/report.md
+  python main.py my_project/ -o output/custom_report.md
         """,
     )
     parser.add_argument(
@@ -36,8 +36,8 @@ Examples:
     parser.add_argument(
         "-o",
         "--output",
-        default="report.md",
-        help="Output path for the generated report (default: report.md)",
+        default="output/report.md",
+        help="Output path for the generated report (default: output/report.md)",
     )
     parser.add_argument(
         "--model",
